@@ -1,0 +1,436 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="csrf-param" content="_csrf-backend">
+    <meta name="csrf-token" content="TnM4UTBTYXQ7QlE9fidWEHZEVB1YagVGdyd9HAYCEAUMKlIGQxkMJw==">
+    <title>APP管理后台</title>
+    <link href="/assets/f35a52ed/css/bootstrap.css" rel="stylesheet">
+<link href="/assets/732a47e3/css/daterangepicker.min.css" rel="stylesheet">
+<link href="/assets/732a47e3/css/daterangepicker-kv.min.css" rel="stylesheet">
+<link href="/assets/32ee7b26/css/kv-widgets.min.css" rel="stylesheet">
+<link href="/assets/d0d894f9/css/kv-grid.min.css" rel="stylesheet">
+<link href="/assets/5b212065/css/bootstrap-dialog-bs3.min.css" rel="stylesheet">
+<link href="/assets/d0d894f9/css/jquery.resizableColumns.min.css" rel="stylesheet">
+<link href="/assets/6d49712e/css/kv-detail-view.min.css" rel="stylesheet">
+<link href="/assets/76e84ad2/ajaxcrud.css" rel="stylesheet">
+<link href="/assets/76e84ad2/kv-grid-fix.css" rel="stylesheet">
+<script src="/assets/732a47e3/js/moment.min.js"></script>
+<script src="/assets/732a47e3/js/locales/zh-cn.js"></script>
+<script src="/assets/5b212065/js/dialog.min.js"></script>
+<script type="text/javascript">window.daterangepicker_0dda8b10 = {"timePicker":true,"timePickerSeconds":true,"timePicker24Hour":true,"locale":{"format":"YYYY\/MM\/DD HH:mm:ss","applyLabel":"确定","cancelLabel":"取消","fromLabel":"从","toLabel":"到","weekLabel":"周","customRangeLabel":"自选日期","daysOfWeek":moment.weekdaysMin(),"monthNames":moment.monthsShort(),"firstDay":moment.localeData()._week.dow},"opens":"left","ranges":{"今天":[moment().startOf('day'),moment()],"昨天":[moment().startOf('day').subtract(1,'days'),moment().endOf('day').subtract(1,'days')],"最近7天":[moment().startOf('day').subtract(6, 'days'),moment()],"最近30天":[moment().startOf('day').subtract(29, 'days'),moment()],"这个月":[moment().startOf('month'),moment().endOf('month')],"上个月":[moment().subtract(1, 'month').startOf('month'),moment().subtract(1, 'month').endOf('month')]},"cancelButtonClasses":"btn-default","language":"zh-cn","autoUpdateInput":false};
+
+var krajeeDialogDefaults_33719062 = {"alert":{"type":"type-info","title":"信息提示","buttonLabel":"<span class=\"glyphicon glyphicon-ok\"></span> 确定"},"confirm":{"type":"type-warning","title":"确认提示","btnOKClass":"btn-warning","btnOKLabel":"<span class=\"glyphicon glyphicon-ok\"></span> 确定","btnCancelLabel":"<span class=\"glyphicon glyphicon-ban-circle\"></span>  取消"},"prompt":{"draggable":false,"title":"信息提示","buttons":[{"label":"取消","icon":"glyphicon glyphicon-ban-circle","cssClass":"btn-default"},{"label":"确定","icon":"glyphicon glyphicon-ok","cssClass":"btn-primary"}],"closable":false},"dialog":{"draggable":true,"title":"信息提示","buttons":[{"label":"取消","icon":"glyphicon glyphicon-ban-circle","cssClass":"btn-default"},{"label":"确定","icon":"glyphicon glyphicon-ok","cssClass":"btn-primary"}]}};
+var krajeeDialog_e48a4427 = {"id":"w1"};
+var krajeeDialog=new KrajeeDialog(true,krajeeDialog_e48a4427,krajeeDialogDefaults_33719062);</script>    <script src="/js/jquery-1.10.2.min.js"></script>
+    <link href="/css/style.css" rel="stylesheet">
+    <link href="/css/nprogress.css" rel="stylesheet">
+    <script src="/js/nprogress.js"></script>
+</head>
+<body>
+
+<div class="left-side sticky-left-side">
+
+    <div class="logo">
+        <!--        <a href="/"><img src="/images/logo.png" alt=""></a>-->
+        <a href="/index/logout" title="退出登陆">
+            <h2>金钱包科技                <br><sub>王烨谱                    <small>(退出登录)</small>
+                </sub></h2>
+        </a>
+    </div>
+    <br>
+    <div class="left-side-inner">
+
+        <ul class="nav nav-pills nav-stacked custom-nav">
+                            <li class="menu-list ">
+                    <a href="/user/list">
+                        <i class="fa fa-group"></i>
+                        <span>用户中心</span>
+                    </a>
+                    <ul class="sub-menu-list">
+                                                    <li class="">
+                                <a href="/order/index"> 订单管理</a></li>
+                                                    <li class="">
+                                <a href="/trade-record/userinfo"> 账户列表</a></li>
+                                                    <li class="">
+                                <a href="/alipay-repayment/index"> 支付宝自动还款</a></li>
+                                                    <li class="">
+                                <a href="/feedback/index"> 用户反馈</a></li>
+                                                    <li class="">
+                                <a href="/contract/index"> 合同管理</a></li>
+                                                    <li class="">
+                                <a href="/repayment-plan/index"> 还款计划</a></li>
+                                                    <li class="">
+                                <a href="/user/list"> 用户列表</a></li>
+                                                    <li class="">
+                                <a href="/trade-record/index"> 提现管理</a></li>
+                                                    <li class="">
+                                <a href="/repayment-plan/manual-repay"> 人工还款/续期</a></li>
+                                                    <li class="">
+                                <a href="/repayment-plan/part-repayment"> 部分还款列表</a></li>
+                                            </ul>
+                </li>
+                                <li class="menu-list ">
+                    <a href="/approve-log/backend">
+                        <i class="fa fa-pencil"></i>
+                        <span>审批管理系统</span>
+                    </a>
+                    <ul class="sub-menu-list">
+                                                    <li class="">
+                                <a href="/approve-log/admin"> 审批管理</a></li>
+                                                    <li class="">
+                                <a href="/approve-quality/index"> 审批质检</a></li>
+                                                    <li class="">
+                                <a href="/approve-shop/loan"> 场景贷</a></li>
+                                                    <li class="">
+                                <a href="/approve-shop/work"> 初审列表</a></li>
+                                                    <li class="">
+                                <a href="/approve-shop/call-work"> 电审列表</a></li>
+                                                    <li class="">
+                                <a href="/approve-shop/pass-mark"> 审核通过待营销</a></li>
+                                                    <li class="">
+                                <a href="/order-market-allot-log/index">  营销列表</a></li>
+                                                    <li class="">
+                                <a href="/approve-shop/old-user"> 老用户定义标签</a></li>
+                                                    <li class="">
+                                <a href="/approve-shop/see"> 审批查看</a></li>
+                                            </ul>
+                </li>
+                                <li class="menu-list ">
+                    <a href="/index/index&id=2&type=1">
+                        <i class="fa fa-bar-chart-o"></i>
+                        <span>渠道转化</span>
+                    </a>
+                    <ul class="sub-menu-list">
+                                                    <li class="">
+                                <a href="/behavior/realtime"> 实时转化漏斗【实时统计】</a></li>
+                                                    <li class="">
+                                <a href="/behavior/trend"> 历史转化漏斗【整体趋势】</a></li>
+                                                    <li class="">
+                                <a href="/behavior-extend/realtime"> 实时统计</a></li>
+                                                    <li class="">
+                                <a href="/behavior-extend/trend"> 整体趋势</a></li>
+                                                    <li class="">
+                                <a href="/behavior-extend/channel"> 渠道效果</a></li>
+                                                    <li class="">
+                                <a href="/behavior/channel"> 渠道转化漏斗【渠道效果】</a></li>
+                                            </ul>
+                </li>
+                                <li class="menu-list ">
+                    <a href="/repayment-plan-refund/add-view">
+                        <i class="fa fa-fast-backward"></i>
+                        <span>退款管理</span>
+                    </a>
+                    <ul class="sub-menu-list">
+                                                    <li class="">
+                                <a href="/repayment-plan-refund/add-view"> 添加退款</a></li>
+                                                    <li class="">
+                                <a href="/repayment-plan-refund/index"> 退款列表</a></li>
+                                            </ul>
+                </li>
+                                <li class="menu-list ">
+                    <a href="/transaction-log/index">
+                        <i class="fa fa fa-money"></i>
+                        <span>交易记录</span>
+                    </a>
+                    <ul class="sub-menu-list">
+                                                    <li class="">
+                                <a href="/transaction-log/index"> 交易列表</a></li>
+                                                    <li class="">
+                                <a href="/yeepay-bank-card-auth/index"> 鉴权记录</a></li>
+                                                    <li class="">
+                                <a href="/contract-transaction-log/index"> 放款记录</a></li>
+                                                    <li class="">
+                                <a href="/trade-log/index"> 支付列表</a></li>
+                                            </ul>
+                </li>
+                                <li class="menu-list ">
+                    <a href="/vip/transaction-index">
+                        <i class="fa fa-quote-right"></i>
+                        <span>会员中心</span>
+                    </a>
+                    <ul class="sub-menu-list">
+                                                    <li class="">
+                                <a href="/vip/transaction-index"> 购买记录</a></li>
+                                                    <li class="active">
+                                <a href="/vip/index"> 会员记录</a></li>
+                                                    <li class="">
+                                <a href="/vip/view-refund"> 会员退款</a></li>
+                                            </ul>
+                </li>
+                                <li class="menu-list ">
+                    <a href="/trade-statistics/index">
+                        <i class="fa fa-bar-chart-o"></i>
+                        <span>对账列表</span>
+                    </a>
+                    <ul class="sub-menu-list">
+                                                    <li class="">
+                                <a href="/accounting/file-upload-view"> 导入文件</a></li>
+                                                    <li class="">
+                                <a href="/trade-statistics/index"> 对账总数</a></li>
+                                                    <li class="">
+                                <a href="/accounts-diff/index"> 未平列表</a></li>
+                                                    <li class="">
+                                <a href="/trade-statistics/offline-not-remark-bill"> 未备注账单</a></li>
+                                                    <li class="">
+                                <a href="/accounting/offline-bill-record"> 未备注账单录入</a></li>
+                                                    <li class="">
+                                <a href="/accounting/offline-bill-upload"> 线下同步支付系统</a></li>
+                                            </ul>
+                </li>
+                                <li class="menu-list ">
+                    <a href="/trade-offline/index">
+                        <i class="fa "></i>
+                        <span>未备注账单</span>
+                    </a>
+                    <ul class="sub-menu-list">
+                                                    <li class="">
+                                <a href="/trade-offline/index"> 未备注列表</a></li>
+                                            </ul>
+                </li>
+                                <li class="menu-list ">
+                    <a href="/data/index">
+                        <i class="fa fa-bar-chart-o"></i>
+                        <span>数据统计</span>
+                    </a>
+                    <ul class="sub-menu-list">
+                                                    <li class="">
+                                <a href="/data/action-info"> 行为统计</a></li>
+                                                    <li class="">
+                                <a href="/activity/index"> 活动统计</a></li>
+                                                    <li class="">
+                                <a href="/invite/index"> 邀请明细</a></li>
+                                                    <li class="">
+                                <a href="/channel-partner/channel-manage"> 渠道管理</a></li>
+                                                    <li class="">
+                                <a href="/channel-partner/transform-effect"> 开放平台</a></li>
+                                                    <li class="">
+                                <a href="/channel-operate-count/count"> 渠道统计明细</a></li>
+                                            </ul>
+                </li>
+                                <li class="menu-list ">
+                    <a href="/notice/index">
+                        <i class="fa fa-volume-up"></i>
+                        <span>推广管理</span>
+                    </a>
+                    <ul class="sub-menu-list">
+                                                    <li class="">
+                                <a href="/notice/index"> 公告列表</a></li>
+                                                    <li class="">
+                                <a href="/promotion/index"> 活动列表</a></li>
+                                                    <li class="">
+                                <a href="/inbox/index"> 私信列表</a></li>
+                                                    <li class="">
+                                <a href="/user-coupon/index"> 优惠券列表</a></li>
+                                                    <li class="">
+                                <a href="/coupon/index"> 添加抵用券</a></li>
+                                                    <li class="">
+                                <a href="/coupon-promotion-record/index"> 发送抵用券</a></li>
+                                            </ul>
+                </li>
+                        </ul>
+
+    </div>
+</div>
+
+<div class="main-content">
+
+    <div class="header-section hide">
+        <nav id="w2" class="navbar navbar-default"><div class="navbar-header"><button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#w2-collapse"><span class="sr-only">Toggle navigation</span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span></button><a class="toggle-btn navbar-brand" href="#"><i class="fa fa-dedent"></i></a></div><div id="w2-collapse" class="collapse navbar-collapse"><ul id="w3" class="navbar-nav navbar-right nav"><li class="dropdown notification-menu"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="/images/user-avatar.png" alt="" />wangyepu@jiumiaodai.com<span class="caret"></span></a><ul class="dropdown-menu dropdown-menu-usermenu pull-right" role="menu"><li><a href="#"><i class="fa fa-user"></i>  我的账户</a></li><li><a href="#"><i class="fa fa-cog"></i>  设置</a></li><li><form action="/index/logout" method="post">
+<input type="hidden" name="_csrf-backend" value="TnM4UTBTYXQ7QlE9fidWEHZEVB1YagVGdyd9HAYCEAUMKlIGQxkMJw=="><button type="submit" class="btn btn-link logout" style="width:100%"><i class="fa fa-sign-out"></i> 退出登录</button></form></ul></li></ul></div></nav>    </div>
+
+    <div class="page-heading" hidden>
+        <ul class="breadcrumb"><li><a href="/">首页</a></li>
+<li class="active">会员列表</li>
+</ul>    </div>
+        <div class="wrapper">
+        <div class="panel">
+            <div class="panel-body" id="content">
+                <div class="menu-index">
+    <div class="wrapper wrapper-content">
+        <div class="ibox float-e-margins">
+            <div class="ibox-content">
+                <div class="row">
+                    <div id="w0" class="grid-view is-bs3 hide-resize" data-krajee-grid="kvGridInit_e5c77b1c" data-krajee-ps="ps_w0_container"><div class="panel panel-default">
+
+<div id="w0-container" class="table-responsive kv-grid-container"><table class="kv-grid-table table table-hover table-bordered table-striped kv-table-wrap"><colgroup><col>
+<col style="width:5%">
+<col>
+<col>
+<col>
+<col>
+<col>
+<col>
+<col></colgroup>
+<thead>
+
+<tr><th class="kv-align-center kv-align-middle" style="width:50px;" data-col-seq="0">#</th><th data-col-seq="1">手机号</th><th data-col-seq="2"><a href="/vip/index?vip%2Findex=&amp;ticket=S3tLO5Pi%2FP3%2B5cl2f6Euq137C3O1OLES%2BZ0vCNp%2FZP5u41UXLC6y%2BIhZ3p1fMm1f0BiNKNQp3fJ2wdujMXvoWxJSRgO78yTo9wq5DazPKLFG3IrJrZq4lrSJgCsUEUU7S2xsIGG0qfevWl87KwjDUkV8snsxbiAC1Vw4AlIV8ZGn6Qqlt3XDgv4jLvcKgxNzrvBf%2BWkbXYX71%2FN0xbFYftGNvQQfzzTniMBAEA1%2FPpwoxMVkJjPrg9j5RUMqSWDy&amp;page=1&amp;sort=vip_no" data-sort="vip_no">会员编号</a></th><th data-col-seq="3">姓名</th><th data-col-seq="4">最后订单状态</th><th data-col-seq="5">最后订单编号</th><th data-col-seq="6">订单</th><th data-col-seq="7">状态</th><th data-col-seq="8">支付时间</th></tr><tr id="w0-filters" class="filters skip-export"><td>&nbsp;</td><td><input type="text" class="form-control" name="VipOrder[telephone]"></td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td><input type="text" class="form-control" name="VipOrder[order_no]"></td><td><select class="form-control" name="VipOrder[status]">
+<option value="">全部</option>
+<option value="0">待支付</option>
+<option value="1">支付中</option>
+<option value="2">待退款</option>
+<option value="7">已关闭</option>
+<option value="4">购买失败</option>
+<option value="5">退款中</option>
+<option value="6">已退款</option>
+<option value="9">已取消</option>
+<option value="8">已购买</option>
+</select></td><td><input type="text" id="viporder-pay_time" class="form-control select-warp-option" name="VipOrder[pay_time]" placeholder="支付时间" autocomplete="off" style="width:120px" data-krajee-daterangepicker="daterangepicker_0dda8b10"></td></tr>
+
+</thead>
+<tbody>
+<tr data-key="240214"><td class="kv-align-center kv-align-middle" style="width:50px;" data-col-seq="0">1</td><td data-col-seq="1">13851925727</td><td data-col-seq="2">VIP201902141433347541</td><td data-col-seq="3">孙宁</td><td data-col-seq="4">待购买会员</td><td data-col-seq="5">6190214844822</td><td data-col-seq="6">6190214844822</td><td data-col-seq="7">待支付</td><td data-col-seq="8">1970-01-01 08:00:00</td></tr>
+<tr data-key="240213"><td class="kv-align-center kv-align-middle" style="width:50px;" data-col-seq="0">2</td><td data-col-seq="1">18654320805</td><td data-col-seq="2">VIP201902141431282746</td><td data-col-seq="3">于晓宁</td><td data-col-seq="4">已放款待还款</td><td data-col-seq="5">6190214739993</td><td data-col-seq="6">6190214739993</td><td data-col-seq="7">已购买</td><td data-col-seq="8">2019-02-14 14:33:05</td></tr>
+<tr data-key="240212"><td class="kv-align-center kv-align-middle" style="width:50px;" data-col-seq="0">3</td><td data-col-seq="1">15839637521</td><td data-col-seq="2">VIP201902141431211052</td><td data-col-seq="3">龚贝贝</td><td data-col-seq="4">待购买会员</td><td data-col-seq="5">6190214760921</td><td data-col-seq="6">6190214760921</td><td data-col-seq="7">购买失败</td><td data-col-seq="8">1970-01-01 08:00:00</td></tr>
+<tr data-key="240211"><td class="kv-align-center kv-align-middle" style="width:50px;" data-col-seq="0">4</td><td data-col-seq="1">15527097132</td><td data-col-seq="2">VIP201902141431155589</td><td data-col-seq="3">张永利</td><td data-col-seq="4">待购买会员</td><td data-col-seq="5">6190214351104</td><td data-col-seq="6">6190214351104</td><td data-col-seq="7">待支付</td><td data-col-seq="8">1970-01-01 08:00:00</td></tr>
+<tr data-key="240210"><td class="kv-align-center kv-align-middle" style="width:50px;" data-col-seq="0">5</td><td data-col-seq="1">15151796602</td><td data-col-seq="2">VIP201902141426324286</td><td data-col-seq="3">毛志峰</td><td data-col-seq="4">待购买会员</td><td data-col-seq="5">6190214719796</td><td data-col-seq="6">6190214719796</td><td data-col-seq="7">购买失败</td><td data-col-seq="8">1970-01-01 08:00:00</td></tr>
+<tr data-key="240209"><td class="kv-align-center kv-align-middle" style="width:50px;" data-col-seq="0">6</td><td data-col-seq="1">15684050500</td><td data-col-seq="2">VIP201902141416483540</td><td data-col-seq="3">孙娇</td><td data-col-seq="4">已放款待还款</td><td data-col-seq="5">6190214450929</td><td data-col-seq="6">6190214450929</td><td data-col-seq="7">已购买</td><td data-col-seq="8">2019-02-14 14:16:59</td></tr>
+<tr data-key="240208"><td class="kv-align-center kv-align-middle" style="width:50px;" data-col-seq="0">7</td><td data-col-seq="1">13929442514</td><td data-col-seq="2">VIP201902141415399267</td><td data-col-seq="3">钟卓强</td><td data-col-seq="4">已放款待还款</td><td data-col-seq="5">6190214210613</td><td data-col-seq="6">6190214210613</td><td data-col-seq="7">已购买</td><td data-col-seq="8">2019-02-14 14:15:48</td></tr>
+<tr data-key="240207"><td class="kv-align-center kv-align-middle" style="width:50px;" data-col-seq="0">8</td><td data-col-seq="1">15821568916</td><td data-col-seq="2">VIP201902141415151256</td><td data-col-seq="3">孙娟</td><td data-col-seq="4">待购买会员</td><td data-col-seq="5">6190214484012</td><td data-col-seq="6">6190214484012</td><td data-col-seq="7">待支付</td><td data-col-seq="8">1970-01-01 08:00:00</td></tr>
+<tr data-key="240206"><td class="kv-align-center kv-align-middle" style="width:50px;" data-col-seq="0">9</td><td data-col-seq="1">13591386767</td><td data-col-seq="2">VIP201902141413355138</td><td data-col-seq="3">谷昊</td><td data-col-seq="4">已放款待还款</td><td data-col-seq="5">6190214877687</td><td data-col-seq="6">6190214877687</td><td data-col-seq="7">已购买</td><td data-col-seq="8">2019-02-14 14:13:45</td></tr>
+<tr data-key="240205"><td class="kv-align-center kv-align-middle" style="width:50px;" data-col-seq="0">10</td><td data-col-seq="1">13976369690</td><td data-col-seq="2">VIP201902141411405067</td><td data-col-seq="3">蔡笃奋</td><td data-col-seq="4">已放款待还款</td><td data-col-seq="5">6190214370333</td><td data-col-seq="6">6190214370333</td><td data-col-seq="7">已购买</td><td data-col-seq="8">2019-02-14 14:11:52</td></tr>
+<tr data-key="240204"><td class="kv-align-center kv-align-middle" style="width:50px;" data-col-seq="0">11</td><td data-col-seq="1">13425924525</td><td data-col-seq="2">VIP201902141411021413</td><td data-col-seq="3">陈媚玉</td><td data-col-seq="4">已放款待还款</td><td data-col-seq="5">6190214974473</td><td data-col-seq="6">6190214974473</td><td data-col-seq="7">已购买</td><td data-col-seq="8">2019-02-14 14:11:42</td></tr>
+<tr data-key="240203"><td class="kv-align-center kv-align-middle" style="width:50px;" data-col-seq="0">12</td><td data-col-seq="1">15982820778</td><td data-col-seq="2">VIP201902141406536947</td><td data-col-seq="3">王恒彪</td><td data-col-seq="4">已放款待还款</td><td data-col-seq="5">6190214779506</td><td data-col-seq="6">6190214779506</td><td data-col-seq="7">已购买</td><td data-col-seq="8">2019-02-14 14:07:03</td></tr>
+<tr data-key="240202"><td class="kv-align-center kv-align-middle" style="width:50px;" data-col-seq="0">13</td><td data-col-seq="1">13529400898</td><td data-col-seq="2">VIP201902141404467462</td><td data-col-seq="3">王浱浠</td><td data-col-seq="4">已放款待还款</td><td data-col-seq="5">6190214075690</td><td data-col-seq="6">6190214075690</td><td data-col-seq="7">已购买</td><td data-col-seq="8">2019-02-14 14:05:16</td></tr>
+<tr data-key="240201"><td class="kv-align-center kv-align-middle" style="width:50px;" data-col-seq="0">14</td><td data-col-seq="1">13730363465</td><td data-col-seq="2">VIP201902141404161171</td><td data-col-seq="3">杨倩</td><td data-col-seq="4">已放款待还款</td><td data-col-seq="5">6190214976970</td><td data-col-seq="6">6190214976970</td><td data-col-seq="7">已购买</td><td data-col-seq="8">2019-02-14 14:24:18</td></tr>
+<tr data-key="240200"><td class="kv-align-center kv-align-middle" style="width:50px;" data-col-seq="0">15</td><td data-col-seq="1">15989180125</td><td data-col-seq="2">VIP201902141356129425</td><td data-col-seq="3">罗巨祥</td><td data-col-seq="4">已放款待还款</td><td data-col-seq="5">6190214423860</td><td data-col-seq="6">6190214423860</td><td data-col-seq="7">已购买</td><td data-col-seq="8">2019-02-14 13:56:23</td></tr>
+<tr data-key="240199"><td class="kv-align-center kv-align-middle" style="width:50px;" data-col-seq="0">16</td><td data-col-seq="1">18613791888</td><td data-col-seq="2">VIP201902141355276888</td><td data-col-seq="3">吴建辉</td><td data-col-seq="4">已放款待还款</td><td data-col-seq="5">6190214677850</td><td data-col-seq="6">6190214677850</td><td data-col-seq="7">已购买</td><td data-col-seq="8">2019-02-14 13:55:36</td></tr>
+<tr data-key="240198"><td class="kv-align-center kv-align-middle" style="width:50px;" data-col-seq="0">17</td><td data-col-seq="1">15023767019</td><td data-col-seq="2">VIP201902141353241026</td><td data-col-seq="3">张弛</td><td data-col-seq="4">已放款待还款</td><td data-col-seq="5">6190214597317</td><td data-col-seq="6">6190214597317</td><td data-col-seq="7">已购买</td><td data-col-seq="8">2019-02-14 13:53:41</td></tr>
+<tr data-key="240197"><td class="kv-align-center kv-align-middle" style="width:50px;" data-col-seq="0">18</td><td data-col-seq="1">15822651181</td><td data-col-seq="2">VIP201902141333211693</td><td data-col-seq="3">韩旭</td><td data-col-seq="4">已放款待还款</td><td data-col-seq="5">6190214166356</td><td data-col-seq="6">6190214166356</td><td data-col-seq="7">已购买</td><td data-col-seq="8">2019-02-14 13:34:38</td></tr>
+<tr data-key="240196"><td class="kv-align-center kv-align-middle" style="width:50px;" data-col-seq="0">19</td><td data-col-seq="1">15827481785</td><td data-col-seq="2">VIP201902141332144845</td><td data-col-seq="3">黄浩</td><td data-col-seq="4">已放款待还款</td><td data-col-seq="5">6190214603361</td><td data-col-seq="6">6190214603361</td><td data-col-seq="7">已购买</td><td data-col-seq="8">2019-02-14 13:32:23</td></tr>
+<tr data-key="240195"><td class="kv-align-center kv-align-middle" style="width:50px;" data-col-seq="0">20</td><td data-col-seq="1">18252252102</td><td data-col-seq="2">VIP201902141330568678</td><td data-col-seq="3">陈铖</td><td data-col-seq="4">已放款待还款</td><td data-col-seq="5">6190214274893</td><td data-col-seq="6">6190214274893</td><td data-col-seq="7">已购买</td><td data-col-seq="8">2019-02-14 13:31:10</td></tr>
+</tbody></table></div>
+<div class="kv-panel-after"></div>
+<div class="panel-footer">    <div class="kv-panel-pager">
+        <ul class="pagination"><li class="first disabled"><span>首页</span></li>
+<li class="prev disabled"><span>上一页</span></li>
+<li class="active"><a href="/vip/index?vip%2Findex=&amp;ticket=S3tLO5Pi%2FP3%2B5cl2f6Euq137C3O1OLES%2BZ0vCNp%2FZP5u41UXLC6y%2BIhZ3p1fMm1f0BiNKNQp3fJ2wdujMXvoWxJSRgO78yTo9wq5DazPKLFG3IrJrZq4lrSJgCsUEUU7S2xsIGG0qfevWl87KwjDUkV8snsxbiAC1Vw4AlIV8ZGn6Qqlt3XDgv4jLvcKgxNzrvBf%2BWkbXYX71%2FN0xbFYftGNvQQfzzTniMBAEA1%2FPpwoxMVkJjPrg9j5RUMqSWDy&amp;page=1" data-page="0">1</a></li>
+<li><a href="/vip/index?vip%2Findex=&amp;ticket=S3tLO5Pi%2FP3%2B5cl2f6Euq137C3O1OLES%2BZ0vCNp%2FZP5u41UXLC6y%2BIhZ3p1fMm1f0BiNKNQp3fJ2wdujMXvoWxJSRgO78yTo9wq5DazPKLFG3IrJrZq4lrSJgCsUEUU7S2xsIGG0qfevWl87KwjDUkV8snsxbiAC1Vw4AlIV8ZGn6Qqlt3XDgv4jLvcKgxNzrvBf%2BWkbXYX71%2FN0xbFYftGNvQQfzzTniMBAEA1%2FPpwoxMVkJjPrg9j5RUMqSWDy&amp;page=2" data-page="1">2</a></li>
+<li><a href="/vip/index?vip%2Findex=&amp;ticket=S3tLO5Pi%2FP3%2B5cl2f6Euq137C3O1OLES%2BZ0vCNp%2FZP5u41UXLC6y%2BIhZ3p1fMm1f0BiNKNQp3fJ2wdujMXvoWxJSRgO78yTo9wq5DazPKLFG3IrJrZq4lrSJgCsUEUU7S2xsIGG0qfevWl87KwjDUkV8snsxbiAC1Vw4AlIV8ZGn6Qqlt3XDgv4jLvcKgxNzrvBf%2BWkbXYX71%2FN0xbFYftGNvQQfzzTniMBAEA1%2FPpwoxMVkJjPrg9j5RUMqSWDy&amp;page=3" data-page="2">3</a></li>
+<li><a href="/vip/index?vip%2Findex=&amp;ticket=S3tLO5Pi%2FP3%2B5cl2f6Euq137C3O1OLES%2BZ0vCNp%2FZP5u41UXLC6y%2BIhZ3p1fMm1f0BiNKNQp3fJ2wdujMXvoWxJSRgO78yTo9wq5DazPKLFG3IrJrZq4lrSJgCsUEUU7S2xsIGG0qfevWl87KwjDUkV8snsxbiAC1Vw4AlIV8ZGn6Qqlt3XDgv4jLvcKgxNzrvBf%2BWkbXYX71%2FN0xbFYftGNvQQfzzTniMBAEA1%2FPpwoxMVkJjPrg9j5RUMqSWDy&amp;page=4" data-page="3">4</a></li>
+<li><a href="/vip/index?vip%2Findex=&amp;ticket=S3tLO5Pi%2FP3%2B5cl2f6Euq137C3O1OLES%2BZ0vCNp%2FZP5u41UXLC6y%2BIhZ3p1fMm1f0BiNKNQp3fJ2wdujMXvoWxJSRgO78yTo9wq5DazPKLFG3IrJrZq4lrSJgCsUEUU7S2xsIGG0qfevWl87KwjDUkV8snsxbiAC1Vw4AlIV8ZGn6Qqlt3XDgv4jLvcKgxNzrvBf%2BWkbXYX71%2FN0xbFYftGNvQQfzzTniMBAEA1%2FPpwoxMVkJjPrg9j5RUMqSWDy&amp;page=5" data-page="4">5</a></li>
+<li><a href="/vip/index?vip%2Findex=&amp;ticket=S3tLO5Pi%2FP3%2B5cl2f6Euq137C3O1OLES%2BZ0vCNp%2FZP5u41UXLC6y%2BIhZ3p1fMm1f0BiNKNQp3fJ2wdujMXvoWxJSRgO78yTo9wq5DazPKLFG3IrJrZq4lrSJgCsUEUU7S2xsIGG0qfevWl87KwjDUkV8snsxbiAC1Vw4AlIV8ZGn6Qqlt3XDgv4jLvcKgxNzrvBf%2BWkbXYX71%2FN0xbFYftGNvQQfzzTniMBAEA1%2FPpwoxMVkJjPrg9j5RUMqSWDy&amp;page=6" data-page="5">6</a></li>
+<li><a href="/vip/index?vip%2Findex=&amp;ticket=S3tLO5Pi%2FP3%2B5cl2f6Euq137C3O1OLES%2BZ0vCNp%2FZP5u41UXLC6y%2BIhZ3p1fMm1f0BiNKNQp3fJ2wdujMXvoWxJSRgO78yTo9wq5DazPKLFG3IrJrZq4lrSJgCsUEUU7S2xsIGG0qfevWl87KwjDUkV8snsxbiAC1Vw4AlIV8ZGn6Qqlt3XDgv4jLvcKgxNzrvBf%2BWkbXYX71%2FN0xbFYftGNvQQfzzTniMBAEA1%2FPpwoxMVkJjPrg9j5RUMqSWDy&amp;page=7" data-page="6">7</a></li>
+<li><a href="/vip/index?vip%2Findex=&amp;ticket=S3tLO5Pi%2FP3%2B5cl2f6Euq137C3O1OLES%2BZ0vCNp%2FZP5u41UXLC6y%2BIhZ3p1fMm1f0BiNKNQp3fJ2wdujMXvoWxJSRgO78yTo9wq5DazPKLFG3IrJrZq4lrSJgCsUEUU7S2xsIGG0qfevWl87KwjDUkV8snsxbiAC1Vw4AlIV8ZGn6Qqlt3XDgv4jLvcKgxNzrvBf%2BWkbXYX71%2FN0xbFYftGNvQQfzzTniMBAEA1%2FPpwoxMVkJjPrg9j5RUMqSWDy&amp;page=8" data-page="7">8</a></li>
+<li><a href="/vip/index?vip%2Findex=&amp;ticket=S3tLO5Pi%2FP3%2B5cl2f6Euq137C3O1OLES%2BZ0vCNp%2FZP5u41UXLC6y%2BIhZ3p1fMm1f0BiNKNQp3fJ2wdujMXvoWxJSRgO78yTo9wq5DazPKLFG3IrJrZq4lrSJgCsUEUU7S2xsIGG0qfevWl87KwjDUkV8snsxbiAC1Vw4AlIV8ZGn6Qqlt3XDgv4jLvcKgxNzrvBf%2BWkbXYX71%2FN0xbFYftGNvQQfzzTniMBAEA1%2FPpwoxMVkJjPrg9j5RUMqSWDy&amp;page=9" data-page="8">9</a></li>
+<li><a href="/vip/index?vip%2Findex=&amp;ticket=S3tLO5Pi%2FP3%2B5cl2f6Euq137C3O1OLES%2BZ0vCNp%2FZP5u41UXLC6y%2BIhZ3p1fMm1f0BiNKNQp3fJ2wdujMXvoWxJSRgO78yTo9wq5DazPKLFG3IrJrZq4lrSJgCsUEUU7S2xsIGG0qfevWl87KwjDUkV8snsxbiAC1Vw4AlIV8ZGn6Qqlt3XDgv4jLvcKgxNzrvBf%2BWkbXYX71%2FN0xbFYftGNvQQfzzTniMBAEA1%2FPpwoxMVkJjPrg9j5RUMqSWDy&amp;page=10" data-page="9">10</a></li>
+<li class="next"><a href="/vip/index?vip%2Findex=&amp;ticket=S3tLO5Pi%2FP3%2B5cl2f6Euq137C3O1OLES%2BZ0vCNp%2FZP5u41UXLC6y%2BIhZ3p1fMm1f0BiNKNQp3fJ2wdujMXvoWxJSRgO78yTo9wq5DazPKLFG3IrJrZq4lrSJgCsUEUU7S2xsIGG0qfevWl87KwjDUkV8snsxbiAC1Vw4AlIV8ZGn6Qqlt3XDgv4jLvcKgxNzrvBf%2BWkbXYX71%2FN0xbFYftGNvQQfzzTniMBAEA1%2FPpwoxMVkJjPrg9j5RUMqSWDy&amp;page=2" data-page="1">下一页</a></li>
+<li class="last"><a href="/vip/index?vip%2Findex=&amp;ticket=S3tLO5Pi%2FP3%2B5cl2f6Euq137C3O1OLES%2BZ0vCNp%2FZP5u41UXLC6y%2BIhZ3p1fMm1f0BiNKNQp3fJ2wdujMXvoWxJSRgO78yTo9wq5DazPKLFG3IrJrZq4lrSJgCsUEUU7S2xsIGG0qfevWl87KwjDUkV8snsxbiAC1Vw4AlIV8ZGn6Qqlt3XDgv4jLvcKgxNzrvBf%2BWkbXYX71%2FN0xbFYftGNvQQfzzTniMBAEA1%2FPpwoxMVkJjPrg9j5RUMqSWDy&amp;page=12010" data-page="12009">页尾</a></li></ul>  跳到第 <input type="text" class="form-control" name="page" value="1" style="display: inline-block; margin-top: 0px; width: 50px; margin-left: 5px; margin-right: 5px;"> 页  <select class="form-control" name="per-page" style="display: inline-block; width: auto; margin-top: 0px; margin-left: 5px; margin-right: 5px;">
+<option value="10">10</option>
+<option value="20" selected>20</option>
+<option value="30">30</option>
+<option value="50">50</option>
+</select>
+    </div>
+    <div class="pull-right"><div class="summary">第<b>1-20</b>条，共<b>240,195</b>条数据.</div></div>
+    <div class="clearfix"></div></div></div></div>                    
+<div id="ajaxCrudModal" class="fade modal" role="dialog" tabindex="-1" data-backdrop ="static" data-keyboard="false" z-index="-999">
+<div class="modal-dialog ">
+<div class="modal-content">
+<div class="modal-header">
+<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+
+</div>
+<div class="modal-body">
+                    
+</div>
+<div class="modal-footer">
+
+</div>
+</div>
+</div>
+</div>                                    </div>
+            </div>
+        </div>
+    </div>
+</div>            </div>
+        </div>
+    </div>
+
+</div>
+<script src="/assets/732a47e3/js/daterangepicker.min.js"></script>
+<script src="/assets/974f1890/yii.js"></script>
+<script src="/assets/32ee7b26/js/kv-widgets.min.js"></script>
+<script src="/assets/f35a52ed/js/bootstrap.js"></script>
+<script src="/assets/5b212065/js/bootstrap-dialog.min.js"></script>
+<script src="/assets/5b212065/js/dialog-yii.min.js"></script>
+<script src="/assets/d0d894f9/js/jquery.resizableColumns.min.js"></script>
+<script src="/assets/974f1890/yii.gridView.js"></script>
+<script src="/assets/6d49712e/js/kv-detail-view.min.js"></script>
+<script src="/assets/76e84ad2/ModalRemote.js"></script>
+<script src="/assets/76e84ad2/ajaxcrud.js"></script>
+<script src="/assets/76e84ad2/kv-grid-checkbox-fix.js"></script>
+<script src="/assets/76e84ad2/kv-detail-view-fix.js"></script>
+<script type="text/javascript">jQuery(document).ready(function () {
+jQuery("#viporder-pay_time").off('change.kvdrp').on('change.kvdrp', function() {
+    var drp = jQuery("#viporder-pay_time").data('daterangepicker'), fm, to;
+    if ($(this).val() || !drp) {
+        return;
+    }
+    fm = moment().startOf('day').format('YYYY/MM/DD HH:mm:ss') || '';
+    to = moment().format('YYYY/MM/DD HH:mm:ss') || '';
+    drp.setStartDate(fm);
+    drp.setEndDate(to);
+    
+});
+if (jQuery('#viporder-pay_time').data('daterangepicker')) { jQuery('#viporder-pay_time').daterangepicker('destroy'); }
+jQuery("#viporder-pay_time").daterangepicker(daterangepicker_0dda8b10, function(start,end,label){var val=start.format('YYYY/MM/DD HH:mm:ss') + ' - ' + end.format('YYYY/MM/DD HH:mm:ss');jQuery("#viporder-pay_time").val(val).trigger('change');});
+
+krajeeYiiConfirm('krajeeDialog');
+var kvGridInit_e5c77b1c=function(){
+jQuery('#w0-container').resizableColumns('destroy').resizableColumns({"store":null,"resizeFromBody":false});
+};
+kvGridInit_e5c77b1c();
+jQuery('#w0').yiiGridView({"filterUrl":"\/vip\/index?vip%2Findex=\u0026ticket=S3tLO5Pi%2FP3%2B5cl2f6Euq137C3O1OLES%2BZ0vCNp%2FZP5u41UXLC6y%2BIhZ3p1fMm1f0BiNKNQp3fJ2wdujMXvoWxJSRgO78yTo9wq5DazPKLFG3IrJrZq4lrSJgCsUEUU7S2xsIGG0qfevWl87KwjDUkV8snsxbiAC1Vw4AlIV8ZGn6Qqlt3XDgv4jLvcKgxNzrvBf%2BWkbXYX71%2FN0xbFYftGNvQQfzzTniMBAEA1%2FPpwoxMVkJjPrg9j5RUMqSWDy\u0026page=1","filterSelector":"#w0-filters input, #w0-filters select, select[name=\u0027per-page\u0027],input[name=\u0027page\u0027]"});
+jQuery('#ajaxCrudModal').modal({"show":false});
+});</script><script src="https://upcdn.b0.upaiyun.com/libs/jqueryui/jquery.ui-1.9.2.min.js"></script>
+<script src="/js/jquery.nicescroll.js"></script>
+<script src="/js/scripts.js"></script>
+<script src="https://apps.bdimg.com/libs/jquery-scrollUp/2.1.0/jquery.scrollUp.min.js"></script>
+
+<script>
+    autoWidth();
+    $(window).resize(function () {
+        autoWidth()
+    });
+
+    function autoWidth() {
+        var width = $(this).width();
+        var height = $(this).height();
+        if (width <= 1366) {
+            $("body").addClass('left-side-collapsed');
+        } else {
+            $("body").removeClass('left-side-collapsed');
+        }
+    }
+
+    // 加载条
+    NProgress.start();
+    NProgress.configure({ease: 'ease', speed: 900});
+    $(document).ready(function () {
+        NProgress.done();
+    })
+
+    $(function () {
+        $.scrollUp({
+            scrollName: 'scrollUp', // Element ID
+            topDistance: '300', // Distance from top before showing element (px)
+            topSpeed: 300, // Speed back to top (ms)
+            animation: 'fade', // Fade, slide, none
+            animationInSpeed: 200, // Animation in speed (ms)
+            animationOutSpeed: 200, // Animation out speed (ms)
+            scrollText: false, // Text for element
+            activeOverlay: false, // Set CSS color to display scrollUp active point, e.g \'#00FFFF\'
+        });
+    });
+</script>
+
+</body>
+</html>
+
+
