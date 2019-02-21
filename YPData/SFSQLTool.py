@@ -19,7 +19,7 @@ class SQLTool:
         return db
 
     def close(self):
-        self.db.close()
+        self.db.close()  
 
     # 创建表
     def createtable(self, sql):
